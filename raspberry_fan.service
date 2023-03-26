@@ -1,0 +1,9 @@
+[Unit]
+Description= 风扇调节温度
+
+[Service]
+ExecStart=/usr/bin/raspberry_fan
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target

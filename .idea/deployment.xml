@@ -13,6 +13,16 @@
           </excludedPaths>
         </serverdata>
       </paths>
+      <paths name="树莓派-4Gb (b753553f-5e1a-4c15-9f59-c4f2a06c7a80)">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/tmp/tmp.1r1aZy0oSV" local="$PROJECT_DIR$" />
+          </mappings>
+          <excludedPaths>
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--4gb" />
+          </excludedPaths>
+        </serverdata>
+      </paths>
     </serverData>
     <option name="myAutoUpload" value="ALWAYS" />
   </component>
