@@ -2,7 +2,7 @@
 Description= 风扇调节温度
 
 [Service]
-ExecStart=/usr/bin/raspberry_fan
+ExecStart=/usr/local/bin/raspberry_fan
 RestartSec=10
 
 [Install]
