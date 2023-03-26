@@ -2,13 +2,14 @@
 <project version="4">
   <component name="PublishConfigData" autoUpload="Always" serverName="respberry (ee147483-d30c-4aa7-805f-f34bc062c0e2)" remoteFilesAllowedToDisappearOnAutoupload="false" autoUploadExternalChanges="true">
     <serverData>
-      <paths name="respberry (ee147483-d30c-4aa7-805f-f34bc062c0e2)">
+      <paths name="树莓派-2GB-local (7f7d9804-a8ca-42c0-b63e-1952c7205c99)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.3IbujIdNUz" local="$PROJECT_DIR$" />
+            <mapping deploy="/tmp/tmp.mx2FFMIEl8" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug-respberry" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--2gb-local" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
           </excludedPaths>
         </serverdata>
       </paths>
