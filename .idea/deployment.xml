@@ -8,8 +8,10 @@
             <mapping deploy="/tmp/tmp.mx2FFMIEl8" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--2gb-local" />
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--4gb" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--2gb-local" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--2gb-local" />
           </excludedPaths>
         </serverdata>
       </paths>
@@ -20,6 +22,8 @@
           </mappings>
           <excludedPaths>
             <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--4gb" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--4gb" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--2gb-local" />
           </excludedPaths>
         </serverdata>
       </paths>

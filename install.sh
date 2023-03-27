@@ -2,7 +2,6 @@
 git clone https://git.werls.top/github/WiringPi.git
 cd WiringPi || exit
 ./build
-
 cd ..
 rm -rf WiringPi
 
@@ -24,3 +23,7 @@ systemctl status raspberry_fan
 # clear
 cd ..
 rm -rf build
+
+# info
+echo "raspberry_fan installed successfully"
+echo "you can use 'systemctl start|stop|restart|status raspberry_fan' to control it"
