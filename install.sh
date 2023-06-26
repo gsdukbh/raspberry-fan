@@ -7,9 +7,9 @@ rm -rf WiringPi
 
 # build raspberry-fan
 mkdir build
-
-apt update && apt install cmake g++ gcc -y
+cd build || exit
 cmake ..
+apt update && apt install cmake g++ gcc -y
 cmake --build . --target raspberry_fan -- -j 16
 
 # install
