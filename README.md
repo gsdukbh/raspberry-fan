@@ -11,6 +11,5 @@
 ## install
 
 ```bash
-chmod +x install.sh
-sudo ./install.sh
+chmod +x install.sh && sudo ./install.sh
 ```
