@@ -19,7 +19,7 @@ int main() {
         cout << "cpu 温度: " << data << endl;
         int temp = atoi(data) / 1000;
         int maxTemp = 80;
-        int minTemp = 60;
+        int minTemp = 70;
         if (temp > maxTemp) {
             cout << "--温度大于 " << maxTemp << " 开启疯扇---" << endl;
             digitalWrite(fan, HIGH);
