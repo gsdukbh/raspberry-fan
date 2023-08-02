@@ -10,7 +10,7 @@ mkdir build
 cd build || exit
 cmake ..
 apt update && apt install cmake g++ gcc -y
-cmake --build . --target raspberry_fan -- -j 16
+cmake --build . --target raspberry_fan -- -j 1
 
 # install
 sudo cp raspberry_fan /usr/local/bin/raspberry_fan
