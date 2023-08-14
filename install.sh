@@ -1,3 +1,6 @@
+# install env
+apt update && apt install cmake g++ gcc -y
+
 # install WiringPi
 git clone https://git.werls.top/github/WiringPi.git
 cd WiringPi || exit
@@ -9,7 +12,6 @@ rm -rf WiringPi
 mkdir build
 cd build || exit
 cmake ..
-apt update && apt install cmake g++ gcc -y
 cmake --build . --target raspberry_fan -- -j 1
 
 # install
