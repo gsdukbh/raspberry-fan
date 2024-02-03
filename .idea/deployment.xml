@@ -1,30 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="PublishConfigData" autoUpload="Always" serverName="respberry (ee147483-d30c-4aa7-805f-f34bc062c0e2)" remoteFilesAllowedToDisappearOnAutoupload="false" autoUploadExternalChanges="true">
+  <component name="PublishConfigData" autoUpload="Always" serverName="远程开发" remoteFilesAllowedToDisappearOnAutoupload="false" autoUploadExternalChanges="true">
     <serverData>
-      <paths name="树莓派-2GB-local (7f7d9804-a8ca-42c0-b63e-1952c7205c99)">
+      <paths name="远程主机-树莓派 (6a3ead6f-424b-4fce-b5aa-bef44c192f55)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.mx2FFMIEl8" local="$PROJECT_DIR$" />
+            <mapping deploy="/tmp/tmp.t6RtVnvG7l" local="$PROJECT_DIR$" />
           </mappings>
           <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-debug" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--4gb" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--2gb-local" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--2gb-local" />
+            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--" />
           </excludedPaths>
         </serverdata>
       </paths>
-      <paths name="树莓派-4Gb (b753553f-5e1a-4c15-9f59-c4f2a06c7a80)">
+      <paths name="远程主机-树莓派 (7c383102-70c5-4261-88c4-d096e8c7e961)">
         <serverdata>
           <mappings>
-            <mapping deploy="/tmp/tmp.1r1aZy0oSV" local="$PROJECT_DIR$" />
+            <mapping local="$PROJECT_DIR$" web="/" />
           </mappings>
-          <excludedPaths>
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--4gb" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--4gb" />
-            <excludedPath local="true" path="$PROJECT_DIR$/cmake-build-release--2gb-local" />
-          </excludedPaths>
         </serverdata>
       </paths>
     </serverData>

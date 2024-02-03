@@ -1,5 +1,5 @@
 #include <iostream>
-#include <wiringPi.h>
+#include <pigpio.h>
 #include <fstream>
 #include <unistd.h>
 #include <math.h>
@@ -7,10 +7,15 @@
 using namespace std;
 
 int main() {
-    wiringPiSetup();
-    int fan = 15;
-    pinMode(fan, OUTPUT);
-    while (TRUE) {
+    if (gpioInitialise() < 0) {
+        std::cerr << "pigpio initialization failed." << std::endl;
+        return 1;
+    }
+
+
+    int fan = 14;
+    gpioSetMode(fan,PI_OUTPUT);
+    while (true) {
         char data[10];
         ifstream infile;
         infile.open("/sys/class/thermal/thermal_zone0/temp");
@@ -22,14 +27,15 @@ int main() {
         int minTemp = 70;
         if (temp > maxTemp) {
             cout << "--温度大于 " << maxTemp << " 开启疯扇---" << endl;
-            digitalWrite(fan, HIGH);
+            gpioWrite(fan,1);
         }
         if (temp <= minTemp) {
             cout << "--温度小于" << minTemp << " 关闭疯扇---" << endl;
-            digitalWrite(fan, LOW);
+            gpioWrite(fan,0);
         }
-        cout << "线程停顿-10s" << endl;
+        cout << "线程停顿-10s " << endl;
         sleep(5);
     }
+    gpioTerminate();
     return 0;
 }

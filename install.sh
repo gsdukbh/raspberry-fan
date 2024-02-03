@@ -2,17 +2,20 @@
 apt update && apt install cmake g++ gcc -y
 
 # install WiringPi
-git clone https://git.werls.top/github/WiringPi.git
-cd WiringPi || exit
-./build
-cd ..
-rm -rf WiringPi
+#git clone https://git.werls.top/github/WiringPi.git
+#cd WiringPi || exit
+#./build
+#cd ..
+#rm -rf WiringPi
 
 # build raspberry-fan
-mkdir build
-cd build || exit
-cmake ..
-cmake --build . --target raspberry_fan -- -j 1
+#mkdir build
+#cd build || exit
+#cmake ..
+#cmake --build . --target raspberry_fan -- -j 1
+
+# change use pigpio
+apt install pigpio -y
 
 # install
 sudo cp raspberry_fan /usr/local/bin/raspberry_fan
