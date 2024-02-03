@@ -19,7 +19,7 @@ apt install pigpio -y
 
 # install
 sudo cp raspberry_fan /usr/local/bin/raspberry_fan
-sudo cp ../raspberry_fan.service /etc/systemd/system/raspberry_fan.service
+sudo cp raspberry_fan.service /etc/systemd/system/raspberry_fan.service
 sudo systemctl enable raspberry_fan
 sudo systemctl start raspberry_fan
 
@@ -27,7 +27,6 @@ sudo systemctl start raspberry_fan
 systemctl status raspberry_fan
 
 # clear
-cd ..
 rm -rf build
 
 # info
