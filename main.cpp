@@ -7,15 +7,12 @@
 using namespace std;
 
 int main() {
-    if (gpioInitialise() < 0) {
-        std::cerr << "pigpio initialization failed." << std::endl;
-        return 1;
-    }
-
-
-    int fan = 14;
-    gpioSetMode(fan,PI_OUTPUT);
     while (true) {
+        if (gpioInitialise() < 0) {
+            std::cerr << "pigpio initialization failed." << std::endl;
+            return 1;
+        }
+        gpioSetMode(fan,PI_OUTPUT);
         char data[10];
         ifstream infile;
         infile.open("/sys/class/thermal/thermal_zone0/temp");
@@ -34,8 +31,8 @@ int main() {
             gpioWrite(fan,0);
         }
         cout << "线程停顿-10s " << endl;
-        sleep(5);
+        gpioTerminate();
+        sleep(10);
     }
-    gpioTerminate();
     return 0;
 }
