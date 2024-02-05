@@ -12,6 +12,7 @@ int main() {
             std::cerr << "pigpio initialization failed." << std::endl;
             return 1;
         }
+        int fan = 14;
         gpioSetMode(fan,PI_OUTPUT);
         char data[10];
         ifstream infile;
