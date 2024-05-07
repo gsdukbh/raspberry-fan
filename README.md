@@ -11,5 +11,7 @@
 ## install
 
 ```bash
+git clone https://github.com/gsdukbh/raspberry-fan.git
+cd raspberry-fan
 chmod +x install.sh && sudo ./install.sh
 ```
