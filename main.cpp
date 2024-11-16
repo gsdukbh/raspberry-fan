@@ -7,6 +7,8 @@
 using namespace std;
 
 int main() {
+     // 禁止自动绑定端口
+    gpioCfgSetSocketPort(0);
     while (true) {
         if (gpioInitialise() < 0) {
             std::cerr << "pigpio initialization failed." << std::endl;
