@@ -1,0 +1,22 @@
+# Raspberry Pi Fan Control Configuration File
+# 树莓派风扇控制配置文件
+
+# GPIO引脚配置
+# GPIO pin for fan control (默认GPIO 14)
+fan_gpio_pin=14
+
+# 温度阈值配置 (单位: 摄氏度)
+# Temperature thresholds (unit: Celsius)
+# 风扇启动温度 (Fan start temperature)
+max_temp=80
+
+# 风扇停止温度 (Fan stop temperature)  
+min_temp=70
+
+# 检测间隔时间 (单位: 秒)
+# Detection interval (unit: seconds)
+check_interval=10
+
+# 是否启用调试输出 (1=启用, 0=禁用)
+# Enable debug output (1=enable, 0=disable)
+debug_mode=1

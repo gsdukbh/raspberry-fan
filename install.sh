@@ -20,6 +20,7 @@ cmake --build . --target raspberry_fan -- -j 1
 
 # install
 sudo cp raspberry_fan /usr/local/bin/raspberry_fan
+sudo cp ../config.txt /usr/local/bin/config.txt
 sudo cp ../raspberry_fan.service /etc/systemd/system/raspberry_fan.service
 sudo systemctl enable raspberry_fan
 sudo systemctl start raspberry_fan
