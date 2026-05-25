@@ -1,5 +1,7 @@
 [Unit]
 Description= 风扇调节温度
+After=pigpiod.service
+Requires=pigpiod.service
 
 [Service]
 ExecStart=/usr/local/bin/raspberry_fan

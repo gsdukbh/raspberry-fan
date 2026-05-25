@@ -20,3 +20,10 @@ check_interval=10
 # 是否启用调试输出 (1=启用, 0=禁用)
 # Enable debug output (1=enable, 0=disable)
 debug_mode=1
+
+# pigpiod daemon 连接配置
+# pigpiod daemon connection settings
+# pigpiod daemon 地址 (pigpiod daemon host, default: localhost)
+pigpio_host=localhost
+# pigpiod daemon 端口 (pigpiod daemon port, default: 8888)
+pigpio_port=8888

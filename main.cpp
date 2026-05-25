@@ -1,5 +1,5 @@
 #include <iostream>
-#include <pigpio.h>
+#include <pigpiod_if2.h>
 #include <fstream>
 #include <unistd.h>
 #include <math.h>
@@ -11,11 +11,13 @@ using namespace std;
 
 // 配置结构体
 struct Config {
-    int fan_gpio_pin = 14;      // 默认GPIO 14
-    int max_temp = 80;          // 默认最高温度 80°C
-    int min_temp = 70;          // 默认最低温度 70°C
-    int check_interval = 10;    // 默认检测间隔 10秒
-    bool debug_mode = true;     // 默认启用调试模式
+    int fan_gpio_pin = 14;          // 默认GPIO 14
+    int max_temp = 80;              // 默认最高温度 80°C
+    int min_temp = 70;              // 默认最低温度 70°C
+    int check_interval = 10;        // 默认检测间隔 10秒
+    bool debug_mode = true;         // 默认启用调试模式
+    string pigpio_host = "localhost"; // pigpiod daemon 地址
+    string pigpio_port = "8888";     // pigpiod daemon 端口
 };
 
 // 读取配置文件
@@ -55,6 +57,10 @@ Config loadConfig(const string& configFile) {
             config.check_interval = stoi(value);
         } else if (key == "debug_mode") {
             config.debug_mode = (stoi(value) == 1);
+        } else if (key == "pigpio_host") {
+            config.pigpio_host = value;
+        } else if (key == "pigpio_port") {
+            config.pigpio_port = value;
         }
     }
     
@@ -81,7 +87,7 @@ int readCPUTemperature() {
 int main() {
     // 加载配置
     Config config = loadConfig("config.txt");
-    gpioCfgSocketPort(10003);// 使用10003 作为默认端口
+
     if (config.debug_mode) {
         cout << "配置加载完成:" << endl;
         cout << "  GPIO引脚: " << config.fan_gpio_pin << endl;
@@ -89,18 +95,20 @@ int main() {
         cout << "  最低温度: " << config.min_temp << "°C" << endl;
         cout << "  检测间隔: " << config.check_interval << "秒" << endl;
         cout << "  调试模式: " << (config.debug_mode ? "启用" : "禁用") << endl;
+        cout << "  pigpiod地址: " << config.pigpio_host << ":" << config.pigpio_port << endl;
         cout << "========================" << endl;
     }
-    
-    // 初始化GPIO
-    if (gpioInitialise() < 0) {
-        cerr << "Error: pigpio 初始化失败" << endl;
+
+    // 连接 pigpiod daemon
+    int pi = pigpio_start(config.pigpio_host.c_str(), config.pigpio_port.c_str());
+    if (pi < 0) {
+        cerr << "Error: 无法连接 pigpiod daemon (" << config.pigpio_host << ":" << config.pigpio_port << ")" << endl;
         return 1;
     }
-    
+
     // 设置风扇GPIO为输出模式
-    gpioSetMode(config.fan_gpio_pin, PI_OUTPUT);
-    
+    set_mode(pi, config.fan_gpio_pin, PI_OUTPUT);
+
     if (config.debug_mode) {
         cout << "GPIO " << config.fan_gpio_pin << " 已设置为输出模式" << endl;
     }
@@ -124,14 +132,14 @@ int main() {
         // 温度控制逻辑
         if (temp > config.max_temp && !fanRunning) {
             // 温度过高，开启风扇
-            gpioWrite(config.fan_gpio_pin, 1);
+            gpio_write(pi, config.fan_gpio_pin, 1);
             fanRunning = true;
             if (config.debug_mode) {
                 cout << " -> 温度超过 " << config.max_temp << "°C，开启风扇" << endl;
             }
         } else if (temp <= config.min_temp && fanRunning) {
             // 温度降低，关闭风扇
-            gpioWrite(config.fan_gpio_pin, 0);
+            gpio_write(pi, config.fan_gpio_pin, 0);
             fanRunning = false;
             if (config.debug_mode) {
                 cout << " -> 温度降至 " << config.min_temp << "°C以下，关闭风扇" << endl;
@@ -152,7 +160,7 @@ int main() {
         sleep(config.check_interval);
     }
     
-    // 程序退出时清理GPIO资源
-    gpioTerminate();
+    // 断开 pigpiod 连接
+    pigpio_stop(pi);
     return 0;
 }

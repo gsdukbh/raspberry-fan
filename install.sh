@@ -11,6 +11,26 @@ apt update && apt install cmake g++ gcc -y
 # change use pigpio
 apt install pigpio -y
 
+# 配置 pigpiod 为 systemd 服务，端口 8888
+cat > /etc/systemd/system/pigpiod.service << 'EOF'
+[Unit]
+Description=pigpiod GPIO daemon
+After=network.target
+
+[Service]
+Type=forking
+ExecStart=/usr/bin/pigpiod -l -p 8888
+ExecStop=/bin/kill -INT $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+EOF
+
+systemctl daemon-reload
+systemctl enable pigpiod
+systemctl start pigpiod
+
 # build raspberry-fan
 mkdir build
 cd build || exit
